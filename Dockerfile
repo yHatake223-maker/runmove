@@ -1,5 +1,5 @@
 # ベースとなるPythonイメージを指定
-FROM python:3.9-slim
+FROM python:3.10-slim
 
 # 作業ディレクトリを設定
 WORKDIR /app
@@ -11,6 +11,6 @@ RUN python -m venv venv
 COPY requirements.txt requirements.txt
 RUN . venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
 
-# 仮想環境をアクティブ化してPythonスクリプトを実行
-COPY . .
-CMD ["/bin/bash", "-c", ". venv/bin/activate && python app.py"]
+# 仮想環境をアクティブ化してインタラクティブシェルを起動
+CMD ["/bin/bash", "-c", ". venv/bin/activate && exec /bin/bash"]
+
