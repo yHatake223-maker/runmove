@@ -11,6 +11,8 @@ RUN python -m venv venv
 COPY requirements.txt requirements.txt
 RUN . venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
 
+##開発するコードをコンテナにコピー
+COPY . .
 # 仮想環境をアクティブ化してインタラクティブシェルを起動
-CMD ["/bin/bash", "-c", ". venv/bin/activate && exec /bin/bash"]
+CMD ["/bin/bash", "-c", "source venv/bin/activate && exec /bin/bash"]
 
