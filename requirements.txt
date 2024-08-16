@@ -2,3 +2,6 @@
 requests
 numpy
 pandas
+cv2
+mediapipe
+csv
